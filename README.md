@@ -21,4 +21,5 @@
 > 7. Rodar `terraform apply`.
 > 8. Criar inbound rules para porta 80 http para vm1 e vm2 para acesso via navegador.
 > 9. Criar recurso Azure Managed Grafana para monitorar os recursos.
+> 10. Crie Metric alert rules usando métricas específicas conforme necessário.
 > Obs.: O JSON MODEL do dashboard criado também está disponível neste repositório.
