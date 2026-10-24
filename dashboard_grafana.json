@@ -1,0 +1,903 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n\n  <h1 style=\"margin-bottom: 0;\">Prática Azure Load Balancer</h1>\n  <h3 style=\"margin-top: 5px;\">Virtual Machine · Load Balancer · Grafana</h3>\n  \n  <p style=\"text-align: center;\">\n    <img src=\"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg\" height=\"50\" width=\"50\" alt=\"Azure\" style=\"display: inline-block; margin: 0 10px;\" />\n    <img src=\"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg\" height=\"50\" width=\"50\" alt=\"Grafana\" style=\"display: inline-block; margin: 0 10px;\" />\n  </p>\n\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.4.8",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "uid": "Azure Monitor"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "to": 0.999
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "DOWN",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VM Availability Metric VM-1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VM 1"
+              },
+              {
+                "id": "unit"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VM Availability Metric VM-2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VM 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 4,
+        "x": 0,
+        "y": 4
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 80
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.4.8",
+      "targets": [
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "customNamespace": "Microsoft.Compute/virtualMachines",
+            "dimensionFilters": [],
+            "metricName": "VmAvailabilityMetric",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "RG-LOADBALANCER-DEMO",
+                "resourceName": "VM-1",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "A",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        },
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "customNamespace": "Microsoft.Compute/virtualMachines",
+            "dimensionFilters": [],
+            "metricName": "VmAvailabilityMetric",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "RG-LOADBALANCER-DEMO",
+                "resourceName": "VM-2",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "azure-monitor-oob"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "B",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        }
+      ],
+      "title": "AVAILABILITY",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "azure-monitor-oob"
+      },
+      "description": "LOAD BALANCER",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "50": {
+                  "color": "dark-red",
+                  "index": 3,
+                  "text": "CRITICAL"
+                },
+                "70": {
+                  "color": "dark-orange",
+                  "index": 2,
+                  "text": "WARNING"
+                },
+                "99": {
+                  "color": "dark-yellow",
+                  "index": 1,
+                  "text": "WARNING"
+                },
+                "100": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "GOOD"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "noValue": "DOWN",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 50
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "#EAB839",
+                "value": 99
+              },
+              {
+                "color": "green",
+                "value": 100
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 4,
+        "y": 4
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 50
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.4.8",
+      "targets": [
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "customNamespace": "Microsoft.Network/loadBalancers",
+            "dimensionFilters": [],
+            "metricName": "DipAvailability",
+            "metricNamespace": "microsoft.network/loadbalancers",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Network/loadBalancers",
+                "region": "chilecentral",
+                "resourceGroup": "rg-loadbalancer-demo",
+                "resourceName": "myLoadBalancer",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "A",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        }
+      ],
+      "title": "HEALTH PROBE ",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "azure-monitor-oob"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "DOWN",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 50
+              },
+              {
+                "color": "#EAB839",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Percentage CPU vm-1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VM 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Percentage CPU VM-2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VM 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 4,
+        "x": 8,
+        "y": 4
+      },
+      "id": 5,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.4.8",
+      "targets": [
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "customNamespace": "microsoft.compute/virtualmachines",
+            "dimensionFilters": [],
+            "metricName": "Percentage CPU",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "rg-loadbalancer-demo",
+                "resourceName": "vm-1",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "A",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        },
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "dimensionFilters": [],
+            "metricName": "Percentage CPU",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "RG-LOADBALANCER-DEMO",
+                "resourceName": "VM-2",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "azure-monitor-oob"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "B",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        }
+      ],
+      "title": "CPU ",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "azure-monitor-oob"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "transparent",
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 33,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": true,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Inbound Flows VM-1"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "VM 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Inbound Flows VM-2"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "VM 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.4.8",
+      "targets": [
+        {
+          "azureMonitor": {
+            "aggregation": "Count",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "dimensionFilters": [],
+            "metricName": "Inbound Flows",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "RG-LOADBALANCER-DEMO",
+                "resourceName": "VM-1",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "A",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        },
+        {
+          "azureMonitor": {
+            "aggregation": "Count",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "dimensionFilters": [],
+            "metricName": "Inbound Flows",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "RG-LOADBALANCER-DEMO",
+                "resourceName": "VM-2",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "azure-monitor-oob"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "B",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        }
+      ],
+      "title": "INBOUND FLOWS",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-azure-monitor-datasource",
+        "uid": "azure-monitor-oob"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "DOWN",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 20
+              },
+              {
+                "color": "orange",
+                "value": 40
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Available Memory Percentage vm-1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VM 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Available Memory Percentage VM-2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VM 2"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 4,
+        "x": 4,
+        "y": 10
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.4.8",
+      "targets": [
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "customNamespace": "microsoft.compute/virtualmachines",
+            "dimensionFilters": [],
+            "metricName": "Available Memory Percentage",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "rg-loadbalancer-demo",
+                "resourceName": "vm-1",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "A",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        },
+        {
+          "azureMonitor": {
+            "aggregation": "Average",
+            "allowedTimeGrainsMs": [
+              60000,
+              300000,
+              900000,
+              1800000,
+              3600000,
+              21600000,
+              43200000,
+              86400000
+            ],
+            "dimensionFilters": [],
+            "metricName": "Available Memory Percentage",
+            "metricNamespace": "microsoft.compute/virtualmachines",
+            "region": "chilecentral",
+            "resources": [
+              {
+                "metricNamespace": "Microsoft.Compute/virtualMachines",
+                "region": "chilecentral",
+                "resourceGroup": "RG-LOADBALANCER-DEMO",
+                "resourceName": "VM-2",
+                "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+              }
+            ],
+            "timeGrain": "PT1M"
+          },
+          "datasource": {
+            "type": "grafana-azure-monitor-datasource",
+            "uid": "azure-monitor-oob"
+          },
+          "queryType": "Azure Monitor",
+          "refId": "B",
+          "subscription": "a0a9c991-c24f-47ac-a8f8-771e9356aadf"
+        }
+      ],
+      "title": "MEMORY",
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "preload": false,
+  "refresh": "5s",
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Grafana Load Balancer Monitor",
+  "uid": "mekswtz",
+  "version": 117,
+  "weekStart": ""
+}
